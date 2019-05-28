@@ -164,7 +164,7 @@ return [
         JeroenNoten\LaravelAdminLte\ServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
 	Laraveles\Spanish\SpanishServiceProvider::class,
-	Meneses\LaravelMpdf\LaravelMpdfServiceProvider::class
+	Meneses\LaravelMpdf\LaravelMpdfServiceProvider::class,
         //Barryvdh\DomPDF\ServiceProvider::class,
         //Codedge\Fpdf\FpdfServiceProvider::class,
 
