@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'es',
 
     /*
     |--------------------------------------------------------------------------
@@ -163,6 +163,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         JeroenNoten\LaravelAdminLte\ServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+	Laraveles\Spanish\SpanishServiceProvider::class,
         //Barryvdh\DomPDF\ServiceProvider::class,
         //Codedge\Fpdf\FpdfServiceProvider::class,
 
