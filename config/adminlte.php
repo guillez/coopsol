@@ -111,13 +111,13 @@ return [
         
         'CANASTA',
         [
-            'text' => 'Compra',
-            'url'  => 'compras',
-            'icon' => 'dollar',
+            'text' => 'Reserva',
+            'url'  => 'reservas',
+            'icon' => 'hand-paper-o',
         ],
         [
             'text' => 'Carrito',
-            'url'  => 'carritos',
+            'url'  => 'carritos/create',
             'icon' => 'cart-plus',
         ],
 

@@ -163,6 +163,9 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         JeroenNoten\LaravelAdminLte\ServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        //Barryvdh\DomPDF\ServiceProvider::class,
+        //Codedge\Fpdf\FpdfServiceProvider::class,
+
         /*
          * Package Service Providers...
          */
@@ -228,6 +231,10 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        //'Fpdf' => Codedge\Fpdf\Facades\Fpdf::class,
+        //'PDF' => Barryvdh\DomPDF\Facade::class,
     ],
+
+
 
 ];

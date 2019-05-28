@@ -2,10 +2,16 @@
 
 @extends('adminlte::page')
 
-@section('title', 'Canastas')
+@section('title', 'Compras' )
 
 @section('content_header')
-    <h1>Canastas</h1>
+    <h1>Compras </h1><br>
+
+El Valor Total Reservado es de : <b>{{ $monto_total }} </b><br>
+
+El Valor Actual de su compra es : <b>{{ $monto_acumulado }} </b><br>
+
+Le queda por gastar : <b>{{ $resto }} </b><br>
 @stop
 
 @section('content')
@@ -16,11 +22,12 @@
 		<div class='col-md-8 col-md-offset-22'>
 			<div class='panel panel-default'>
 				<div class='panel-heading'>
-				Listado de Canastas
+				Listado de Productos Seleccionados
 				<td width='100%'> 
 
- 				@if( auth()->id()<4)
-				<a href='{{route('canastas.create')}}' class='btn btn-sm btn-success pull-right'>Nuevo</a>
+ 				@if( $canasta_id>0)
+				<a href='{{route('carritos.create')}}' class='btn btn-sm btn-success pull-right'>Nuevo</a>
+
 				@endif
  
 				
@@ -34,33 +41,27 @@
 					<thead>
 						<tr>
 							<th width='5%'> ID </th>
-							<th colspan=2, width='45%'> Descripcion</th>							
-<th width='20%'> INICIO </th>		
-							<th width='10%'> FIN </th>
-							<th width='2%'> ENTREGA </th>																			<th width='20%'> MONTO </th>			
-	<th width='20%'> ACTIVA </th>	
+							<th colspan=2, width='45%'> Producto</th>							
+<th width='20%'> Cantidad </th>		
+							
 							<th colspan=2, width='30%'> ACCIONES </th>						
 						</tr>
 					</thead>
 
 					<tbody> 
 
-					@foreach($canastas as $canasta)
+					@foreach($carritos as $carrito)
 						<tr>
-						<td> {{$canasta->id}} </td>
-					    <td colspan=2> {{$canasta->descripcion}} </td>	
-						<td >{{$canasta->iniciocompra}}  </td>								    	
-						<td > {{$canasta->fincompra}} </td>	
-						<td>  {{$canasta->fechaentrega}}</td>	
-<td>  {{$canasta->monto}}</td>		
-						<td> {{$canasta->activa}} </td>												
+						<td> {{$carrito->id}} </td>
+					    <td colspan=2> {{ $carrito->producto->descripcion }} </td>	
+						<td > {{$carrito->cantidad}} </td>				    	
+										
 
 						<td width='10px'>  
-						<a href='{{route('canastas.edit', $canasta->id)}}' class='btn btn-sm btn-warning'>Editar</a>
-						</td>		
-	
+						<a href='{{route('carritos.edit', $carrito->id)}}' class='btn btn-sm btn-warning'>Editar</a>
+						</td>			
 						<td width='10px'>  
-						{!! Form::open(['route'=>['canastas.destroy',$canasta->id ], 'method'=> 'DELETE']) !!}
+						{!! Form::open(['route'=>['carritos.destroy',$carrito->id ], 'method'=> 'DELETE']) !!}
 							<button class='btn btn-sm btn-danger'> 
 								Eliminar
 							</button>
@@ -74,7 +75,7 @@
 					</tbody>
 					</table>
 
-					{{$canastas->render()}}
+					{{$carritos->render()}}
 				</div>	
 			</div>			
 		</div>

@@ -98,4 +98,19 @@ class CanastaController extends Controller
         $canasta = Canasta::find($id)->delete();
         return back()->with('info','Etiqueta Eliminada');
     }
+
+
+    public function imprimircan()
+    {
+	$canastas = Canasta::select('*')->where('canasta_id', '1')->get();
+        //->where('alumnoactivo', 1)
+        view()->share('canastas',$canastas);//VARIABLE GLOBAL PRODUCTOS
+
+        $pdf = PDF::loadView('imprimircan');//CARGO LA VISTA
+        return $pdf->download('formulario');//SUGERIR NOMBRE A DESCARGAR
+
+    }
+
+
+
 }

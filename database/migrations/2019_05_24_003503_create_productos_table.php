@@ -37,7 +37,7 @@ class CreateProductosTable extends Migration
 
             $table->foreign('canasta_id')
                 ->references('id')
-                ->on('canastass')
+                ->on('canastas')
                 ->onDelete('cascade');
         });
     }

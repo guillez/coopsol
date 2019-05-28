@@ -20,7 +20,7 @@ class ProductoController extends Controller
     public function index()
     {
         //
-       $productos = Producto::orderBy('id', 'DESC')->paginate();
+       $productos = Producto::orderBy('id', 'DESC')->paginate(50);
        // $posts = Post::orderBy('id', 'DESC')->where('user_id',auth()->user()->id)->paginate();
        // dd($posts);
         return view('admin.productos.index', compact('productos'));

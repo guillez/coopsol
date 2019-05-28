@@ -22,6 +22,7 @@ class CreateComprasTable extends Migration
             $table->integer('cantidad')->default(0);
             $table->boolean('pagado')->default(0);
             $table->string('comentario',250)->nullable();
+            $table->boolean('confirmada')->default(0);
             $table->boolean('anulado')->default(0);
             $table->date('fechapago')->nullable();
   	    $table->integer('deleted_at')->default(0);

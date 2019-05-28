@@ -15,6 +15,7 @@ class CanastasTableSeeder extends Seeder
         App\Canasta::create([
     	'descripcion'=>'CANASTA JUNIO 2019',
     	'domiciliopago'=>'1',
+    	'activa'=>'1',
     	'domicilioentrega'=>'-',
 	'iniciocompra'=>'2019-01-01',
 	'fincompra'=>'2019-01-01',

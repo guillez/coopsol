@@ -11,23 +11,44 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+//protected $redirectPath = '/dashboard';
+
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+
+
+//Route::auth();
+
+//Auth::routes();
+
+Route::get('/', function() {
+	// e realidad va home
+	return redirect('home');
+});  
+
+Route::auth();
+Route::group(['middleware' => ['auth']], function () {
+
+
+Route::get('imprimircan',array(
+    'as'=>'imprimircan',
+    'uses'=>'Admin\canastaController@imprimircan'
+));
+	
+	Route::get('/home', 'HomeController@index')->name('home');
+
+	Route::resource('seguros', 'Admin\SeguroController');
+
+	Route::resource('proveedors', 'Admin\ProveedorController');
+
+	Route::resource('productos', 'Admin\ProductoController');
+
+	Route::resource('canastas', 'Admin\CanastaController');
+
+	Route::resource('reservas', 'Admin\CompraController');
+
+	Route::resource('carritos', 'Admin\CarritoController');
+	Route::resource('carritos1', 'Admin\CarritoController');
 });
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::resource('seguros', 'Admin\SeguroController');
-
-Route::resource('proveedors', 'Admin\ProveedorController');
-
-Route::resource('productos', 'Admin\ProductoController');
-
-Route::resource('canastas', 'Admin\CanastaController');
 
