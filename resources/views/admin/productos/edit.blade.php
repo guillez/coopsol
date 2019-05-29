@@ -21,7 +21,7 @@
 
 				<div class='panel-body'>
 
-				{!! Form::model($producto, ['route'=> ['productos.update', $seguro->id] , 'method'=> 'PUT' ]) !!}
+				{!! Form::model($producto, ['route'=> ['productos.update', $producto->id] , 'method'=> 'PUT' ]) !!}
 
 					@include('admin.productos.partials.form')
 
