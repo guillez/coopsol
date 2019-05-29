@@ -112,5 +112,28 @@ class CanastaController extends Controller
     }
 
 
+    public function enviar($id) 
+    {
+        $usuarios = User::select('*')
+            ->join('role_user', 'users.id', '=', 'role_user.user_id')
+            ->whereIn('role_id', ['1','3','4','5'])
+            ->get();
+            
+        foreach ($usuarios as $usuario) {
+            $my_destination[] = $usuario->email;
+        }
+
+        if ($my_destination) {
+            $actividad =  $this->registros->find($id);
+
+            Mail::send('actividades.actividad', ['actividad' => $actividad], function ($message) use ($my_destination)
+                {
+                    $message->from('tramitesextension@ucu.edu.ar', 'AELF-UCU: Sistema Extensión');
+                    $message->to($my_destination);
+                    $message->subject('UCUEXT: Actividad presentada');
+                }
+            );
+        }
+    } 
 
 }

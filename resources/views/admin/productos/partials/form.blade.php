@@ -5,21 +5,14 @@
 	{{ Form::text('descripcion', null, ['class'=>'form-control','descripcion'=>'descripcion']) }}
 </div>
 <div class="form-group"> 
-	{{ Form::label('direccion','direccion') }}
-	{{ Form::text('direccion', null, ['class'=>'form-control','direccion'=>'direccion']) }}
+	{{ Form::label('monto','monto') }}
+	{{ Form::text('monto', null, ['class'=>'form-control','monto'=>'monto']) }}
 </div>
 <div class="form-group"> 
-	{{ Form::label('email','email') }}
-	{{ Form::text('email', null, ['class'=>'form-control','email'=>'email']) }}
+	{{ Form::label('unidad','unidad') }}
+	{{ Form::text('unidad', null, ['class'=>'form-control','unidad'=>'unidad']) }}
 </div>
-<div class="form-group"> 
-	{{ Form::label('telefono','telefono') }}
-	{{ Form::text('telefono', null, ['class'=>'form-control','telefono'=>'telefono']) }}
-</div>
-<div class="form-group"> 
-	{{ Form::label('celular','celular') }}
-	{{ Form::text('celular', null, ['class'=>'form-control','celular'=>'celular']) }}
-</div>
+
 
 <div class="form-group"> 
 	{{ Form::submit('Guardar', ['class'=>'btn btn-sm btn-primary']) }}
