@@ -33,9 +33,16 @@ Route::group(['middleware' => ['auth']], function () {
 
 Route::get('imprimircan',array(
     'as'=>'imprimircan',
-    'uses'=>'Admin\canastaController@imprimircan'
+    'uses'=>'Admin\InformeController@imprimircan'
 ));
 	
+
+Route::get('informemensual',array(
+    'as'=>'informemensual',
+    'uses'=>'Admin\InformeController@informemensual'
+));
+	
+
 	Route::get('/home', 'HomeController@index')->name('home');
 
 	Route::resource('seguros', 'Admin\SeguroController');
@@ -50,5 +57,7 @@ Route::get('imprimircan',array(
 
 	Route::resource('carritos', 'Admin\CarritoController');
 	Route::resource('carritos1', 'Admin\CarritoController');
+
+	//Route::resource('imprimircan', 'Admin\InformeController@imprimircan');
 });
 

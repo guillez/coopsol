@@ -120,23 +120,36 @@ return [
             'url'  => 'carritos/create',
             'icon' => 'cart-plus',
         ],
+        [
+            'text' => 'Comprobante',
+            'url'  => 'imprimircan',
+            'icon' => 'file-text-o',
+        ],
+        [
+            'text' => 'Lista de Compra',
+            'url'  => 'informemensual',
+            'icon' => 'map-o',
 
+        ],
      
         'CONFIGURACIONES',
         [
             'text'       => 'Proveedores',
              'url'  => 'proveedors',
             'icon_color' => 'red',
+             'can' => 'map-o',
         ],
         [
              'text'       => 'Productos',
              'url'  => 'productos',
             'icon_color' => 'yellow',
+'can' => 'map-o',
         ],
         [
              'text'       => 'Canastas',
              'url'  => 'canastas',
             'icon_color' => 'aqua',
+            'can' => 'map-o',
         ],
     ],
 
