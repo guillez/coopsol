@@ -21,10 +21,8 @@ class ProductoUpdateRequest extends FormRequest
     {
         return [
             'descripcion'=>'required',
-            'direccion'=>'required',
-            'email'=>'required|unique:seguros,email,'.$this->proveedor,
-            'telefono'=>'required',
-            'celular'=>'required'
+            'monto'=>'required',
+            'unidad'=>'required'
         ];
     }
 
@@ -32,10 +30,9 @@ class ProductoUpdateRequest extends FormRequest
     {
         return [
             'descripcion.required'=>'Es obligatorio poner la descripcion.',
-            'direccion.required'=>'Es obligatorio poner la direccion.',
-            'email.required'=>'Es obligatorio poner el email',
-            'telefono.required'=>'Es obligatorio poner la telefono fijo.',
-            'celular.required'=>'Es obligatorio poner el celular.'
+            'monto.required'=>'Es obligatorio monto.',
+            'unidad.required'=>'Es obligatorio unidad'
+            
         ];
 
 

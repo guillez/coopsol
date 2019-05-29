@@ -43,7 +43,7 @@ class ProductoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(productostoreRequest $request)
+    public function store(ProductoStoreRequest $request)
     {
         $producto = Producto::create($request->all());
         return redirect()->route('productos.edit', $producto->id)->with('info','Entidad Aseguradora Guardada con Exito');
@@ -80,7 +80,7 @@ class ProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(SeguroUpdateRequest $request, $id)
+    public function update(ProductoUpdateRequest $request, $id)
     {
         $producto = Producto::find($id);
         $producto->fill($request->all())->save();

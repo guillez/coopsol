@@ -17,14 +17,28 @@ class ProductoStoreRequest extends FormRequest
      *
      * @return array
      */
+
+
     public function rules()
     {
         return [
             'descripcion'=>'required',
-            'direccion'=>'required',
-            'email'=>'required|unique:seguros,email',
-            'telefono'=>'required',
-            'celular'=>'required'
+            'monto'=>'required',
+            'unidad'=>'required'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'descripcion.required'=>'Es obligatorio poner la descripcion.',
+            'monto.required'=>'Es obligatorio monto.',
+            'unidad.required'=>'Es obligatorio unidad'
+            
+        ];
+
+
+
+
+
 }
