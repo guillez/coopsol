@@ -45,7 +45,7 @@ class InformeController extends Controller
 	//$carritos = Carrito::orderBy('id', 'DESC')->where('canasta_id', '=', $canasta_id)->get();	
         //$canastas = Carrito::join('*')->where('canasta_id', '=' ,$canasta_id)->where('usuario_id', '=', auth()->user()->id)->get();
    
-        $carritos = Carrito::join('productos', 'carritos.producto_id', '=', 'productos.id')->join('users', 'carritos.usuario_id', '=', 'users.id')->where('carritos.canasta_id', '=', $canasta_id)->where('carritos.usuario_id', '=', auth()->user()->id ) ->select('productos.descripcion as producto','carritos.cantidad as cantidad','users.name as nombre','users.email as email')->orderBy('productos.descripcion')->get();
+        $carritos = Carrito::join('productos', 'carritos.producto_id', '=', 'productos.id')->join('users', 'carritos.usuario_id', '=', 'users.id')->where('carritos.canasta_id', '=', $canasta_id)->where('carritos.usuario_id', '=', auth()->user()->id ) ->select('productos.descripcion as producto','productos.monto as monto','productos.unidad as unidad','carritos.cantidad as cantidad','users.name as nombre','users.email as email')->orderBy('productos.descripcion')->get();
 
 
         view()->share('carritos',$carritos);//VARIABLE GLOBAL PRODUCTOS

@@ -12,6 +12,8 @@ LISTADO DE PRODUCTOS
 <td style="width: 20px; border:none; ">&nbsp; </td>
 <td style="width: 20px;  text-align: left;">{{ $carrito->cantidad }}</td>
 <td style="width: 20px; border:none; ">&nbsp; </td>
+<td style="width: 20px;  text-align: left;">{{ $carrito->monto }}</td>
+<td style="width: 20px; border:none; ">&nbsp; </td>
 <td style="width: 20px;  text-align: left;">&nbsp;</td>
 
 </tr>
