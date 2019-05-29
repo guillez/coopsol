@@ -164,9 +164,8 @@ return [
         JeroenNoten\LaravelAdminLte\ServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
 	Laraveles\Spanish\SpanishServiceProvider::class,
-	Meneses\LaravelMpdf\LaravelMpdfServiceProvider::class,
-        //Barryvdh\DomPDF\ServiceProvider::class,
-        //Codedge\Fpdf\FpdfServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
+        Codedge\Fpdf\FpdfServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -233,9 +232,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
-        'PDF' => Meneses\LaravelMpdf\Facades\LaravelMpdf::class
-        //'Fpdf' => Codedge\Fpdf\Facades\Fpdf::class,
-        //'PDF' => Barryvdh\DomPDF\Facade::class,
+        'Fpdf' => Codedge\Fpdf\Facades\Fpdf::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
     ],
 
 
