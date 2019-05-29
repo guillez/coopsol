@@ -1,4 +1,4 @@
-
+<img src="img/coop.png">
 <table style="height: 239px; width: 476px; border: none !important; " >
 <tbody>
     @foreach ($personas as $persona)
