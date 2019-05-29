@@ -68,7 +68,7 @@ class InformeController extends Controller
 	}
 
    
-$carritos = DB::table('carritos')->join('productos', 'carritos.producto_id', '=', 'productos.id')->select(DB::raw('sum(carritos.cantidad) as cantidad, productos.descripcion'))->where('carritos.canasta_id', '=', $canasta_id)->groupBy('productos.id')->orderBy('productos.descripcion')->get();
+$carritos = DB::table('carritos')->join('productos', 'carritos.producto_id', '=', 'productos.id')->select(DB::raw('sum(carritos.cantidad) as cantidad, productos.descripcion, productos.monto, productos.unidad'))->where('carritos.canasta_id', '=', $canasta_id)->groupBy('productos.id')->orderBy('productos.descripcion')->get();
 
      /*   $carritos = Carrito::join('productos', 'carritos.producto_id', '=', 'productos.id')->join('users', 'carritos.usuario_id', '=', 'users.id')->where('carritos.canasta_id', '=', $canasta_id)->select('productos.descripcion as producto','carritos.cantidad as cantidad','users.name as nombre','users.email as email')->groupBy('productos.id')->get();
 */
