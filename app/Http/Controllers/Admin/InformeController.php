@@ -35,8 +35,13 @@ class InformeController extends Controller
     public function imprimircan()
     {
 
+            $my_destination[] = "ingguillermoz@gmail.com";  
+
+           // $personas =  Persona::orderBy('id', 'DESC')->find(22); //$this->personas->find(22);
+
 
        $canastas = Canasta::orderBy('id', 'DESC')->where('activa', '=', 1)->get();
+
 
        foreach($canastas as $canasta){
 	
@@ -47,6 +52,13 @@ class InformeController extends Controller
    
         $carritos = Carrito::join('productos', 'carritos.producto_id', '=', 'productos.id')->join('users', 'carritos.usuario_id', '=', 'users.id')->where('carritos.canasta_id', '=', $canasta_id)->where('carritos.usuario_id', '=', auth()->user()->id ) ->select('productos.descripcion as producto','productos.monto as monto','productos.unidad as unidad','carritos.cantidad as cantidad','users.name as nombre','users.email as email')->orderBy('productos.descripcion')->get();
 
+            Mail::send('imprimircan', ['persona' => $carritos], function ($message) use ($my_destination)
+                {
+                    $message->from('ingguillermoz@ucu.edu.ar', 'Prueba');
+                    $message->to($my_destination);
+                    $message->subject('Prueba1');
+                }
+            );
 
         view()->share('carritos',$carritos);//VARIABLE GLOBAL PRODUCTOS
 
