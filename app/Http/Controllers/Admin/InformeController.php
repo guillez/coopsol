@@ -12,6 +12,8 @@ use App\Producto;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 
+use Mail;
+
 use PDF;
 
 class InformeController extends Controller
