@@ -56,7 +56,7 @@ class InformeController extends Controller
 
             Mail::send('imprimircan', ['carritos' => $carritos], function ($message) use ($my_destination)
                 {
-                    $message->from('ingguillermoz@ucu.edu.ar', 'Prueba');
+                    $message->from('ingguillermoz@gmail.com', 'Prueba');
                     $message->to($my_destination);
                     $message->subject('Prueba1');
                 }
