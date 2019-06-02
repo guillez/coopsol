@@ -30,9 +30,9 @@ return [
     |
     */
 
-    'logo' => '<b>Coop</b>SOL',
+    'logo' => '<b>Cooperativa</b>DelPueblo',
 
-    'logo_mini' => '<b>A</b>LT',
+    'logo_mini' => '<b>Coop</b>SOL',
 
     /*
     |--------------------------------------------------------------------------
@@ -133,12 +133,12 @@ return [
 
         ],
      
-        'CONFIGURACIONES',
+        'DE INTERES',
         [
-            'text'       => 'Proveedores',
-             'url'  => 'proveedors',
+            'text'       => 'Como se compra?',
+             'url'  => 'home',
             'icon_color' => 'red',
-             'can' => 'map-o',
+          
         ],
         [
              'text'       => 'Productos',

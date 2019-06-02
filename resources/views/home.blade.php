@@ -16,9 +16,8 @@ Para realizar las compras te detallamos seguir los siguientes pasos:
 7 - Seleccionar el <b>producto</b> deseado y la <b>cantidad</b> <br>
 8 - Presionar el boton <b>guardar</b> para confirmar la copra del producto<br>
 9 - Podemos realizar el cambio de lo guardado eliminando la carga con el boton <b>Eliminar</b><br>
-10 - Como paso final se debe presionar en boton <b>TERMINAR Y CONFIRMAR</b> , esto cierra el carrito y no deja modificar nada de la compra<br>
-11 - Enviar el comprobante al emial <b>coopdelpueblocdelu@gmail.com</b><br>
-12 - <b>Concurrir al punto de pago</b> para que se <b>haga efectiva la compra</b> respetando el dia de cierre de pagos.<br>
+10 - Como paso final se debe presionar en boton <b>FINALIZAR COMPRA</b> , esto cierra el carrito y no deja modificar nada de la compra<br>
+11 - <b>Concurrir al punto de pago</b> para que se <b>haga efectiva la compra</b> respetando el dia de cierre de pagos.<br>
 <br><br>
 Ante cualquier consulta dirigirse a: <b>coopdelpueblocdelu@gmail.com</b><br>
 @stop
