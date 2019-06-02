@@ -9,6 +9,7 @@ use App\Canasta;
 use App\User;
 use App\Carrito;
 use App\Producto;
+use Mail;
 
 class CarritoController extends Controller
 {
@@ -428,4 +429,89 @@ $carrito = Carrito::orderBy('id', 'DESC')->paginate(50);
 
 
     }
+
+
+ public function terminarcompra()
+    {
+/*
+       $my_destination[] = "ingguillermoz@gmail.com";  
+
+       $canastas= Compra::join('canastas', 'compras.canasta_id', '=', 'canastas.id')
+			->where('canastas.activa', '=', '1')
+			->where('compras.confirmada', '=', '1')
+			->where('compras.usuario_id', '=', auth()->user()->id )
+                        ->select('compras.canasta_id as cid')
+                        ->get();
+
+	
+       foreach($canastas as $canasta){
+	
+        $canasta_id=$canasta->cid;
+	}
+
+	if(count($canastas)==0)  $canasta_id = '';
+
+       $carritos = Carrito::orderBy('id', 'DESC')->where('canasta_id', '=', $canasta_id)
+			->where('usuario_id', '=', auth()->user()->id )->paginate(50);
+
+
+	Mail::send('imprimircan', ['carritos' => $carritos], function ($message) use ($my_destination)
+		        {
+		            $message->from('ingguillermoz@gmail.com', 'Prueba');
+		            $message->to($my_destination);
+		            $message->subject('Compra Confirmada');
+		        }
+		    );*/
+
+
+        $my_destination[] = "ingguillermoz@gmail.com";  
+
+           // $personas =  Persona::orderBy('id', 'DESC')->find(22); //$this->personas->find(22);
+
+
+       $canastas = Canasta::orderBy('id', 'DESC')->where('activa', '=', 1)->get();
+
+
+       foreach($canastas as $canasta){
+	
+        $canasta_id=$canasta->id;
+	}
+
+   
+        $carritos = Carrito::join('productos', 'carritos.producto_id', '=', 'productos.id')->join('users', 'carritos.usuario_id', '=', 'users.id')->where('carritos.canasta_id', '=', $canasta_id)->where('carritos.usuario_id', '=', auth()->user()->id ) ->select('productos.descripcion as producto','productos.monto as monto','productos.unidad as unidad','carritos.cantidad as cantidad','users.name as nombre','users.email as email')->orderBy('productos.descripcion')->get();
+
+            Mail::send('imprimircan', ['carritos' => $carritos], function ($message) use ($my_destination)
+                {
+                    $message->from('ingguillermoz@gmail.com', 'Confirmacion de Compra');
+                    $message->to($my_destination);
+                    $message->subject('Confirmacion de Compra');
+                }
+            );
+
+
+
+    $controlcanasta= Compra::join('canastas', 'compras.canasta_id', '=', 'canastas.id')
+                                 ->where('canastas.activa', '=', '1')->where('compras.usuario_id', '=', auth()->user()->id)
+ ->where('canastas.id', '=', $canasta_id)->select('compras.id as cid')->get();
+
+	foreach($controlcanasta as $co){
+          $cid =$co->cid ;
+	}
+
+    // if(count($controlcanasta)>0)  $cid =$controlcanasta->cid ;
+
+     $compra = Compra::find($cid);
+
+     $compra->confirmada = 2;
+
+     $compra->save();
+
+
+        return view('home');
+
+
+
+    }
+
+
 }

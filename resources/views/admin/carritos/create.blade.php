@@ -10,6 +10,21 @@
 
 @section('content')
 
+
+@if($resto<10) 
+
+@if(!$carritos1->isEmpty()) 
+
+<?php $mensaje='<table align="center" color="RED" ><tr><td><H3>CARRITO COMPLETO.</H3></td></tr></table>'; ?>
+<?php echo $mensaje; ?><a class="btn btn-success" href="{{route('terminarcompra')}}">Finalizar Compra <span class="glyphicon glyphicon-ok-sign"></span> </a>
+<br>
+@else
+	<H3>SOLO QUEDA REALIZAR EL PAGO PARA CONCLUIR LA COMPRA.</H3>
+@endif
+
+@else	
+
+
 <div class='container'>
 	<div class='row'>
 		<div class='col-md-8 col-md-offset-1'>
@@ -32,11 +47,8 @@
 	</div>
 </div>
 
-
-@if($resto<10) 
-<?php $mensaje='<table align="center" color="RED"><tr><td><H3>CARRITO COMPLETO.</H3></td></tr></table>'; ?>
-<?php echo $mensaje; ?>
 @endif
+
 <br>
 
 
