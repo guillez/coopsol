@@ -24,12 +24,11 @@ EMAIL COMPRADOR:<b>{{ auth()->user()->email }}</b><br><br>
 
 
 
- 				@if( auth()->id()<4 )
+ 				
                                   @if(count($controlcanasta)==0)
 				<a href='{{route('reservas.create')}}' class='btn btn-sm btn-success pull-right'>Nueva</a>
                                   @endif
-				@endif
- 
+				
 				
 
 				</td>

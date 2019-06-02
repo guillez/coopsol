@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Producto extends Model
 {
 
-	protected $fillable = ['id','descripcion', 'monto'];
+	protected $fillable = ['id','descripcion', 'monto','unidad'];
 
 	public function getDescripcionCopletaAttribute()
 	{

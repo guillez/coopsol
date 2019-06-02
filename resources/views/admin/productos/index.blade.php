@@ -35,11 +35,10 @@
 						<tr>
 							<th width='5%'> ID </th>
 							<th colspan=2, width='45%'> Descripcion</th>							
-<th width='20%'> UNIDAD </th>		
+<th width='12%'> UNIDAD </th>		
 							<th width='10%'> PRECIO </th>
-							<th width='2%'> PROVEEDOR </th>																			<th width='20%'> ACTIVO </th>			
-	
-							<th colspan=2, width='30%'> ACCIONES </th>						
+							@if( auth()->id()<4 )
+							<th colspan=2, width='10%'> ACCIONES </th>						@endif
 						</tr>
 					</thead>
 
@@ -52,8 +51,8 @@
 						<td >{{$producto->unidad}}  </td>								    	
 						<td > {{$producto->monto}} </td>	
 						<td>  </td>		
-						<td> {{$producto->activo}} </td>												
-	
+									
+						@if( auth()->id()<4 )
 						<td width='10px'>  
 						<a href='{{route('productos.edit', $producto->id)}}' class='btn btn-sm btn-warning'>Editar</a>
 						</td>			
@@ -65,7 +64,7 @@
 
 						{!! Form::close() !!}
 						</td>			
-
+						@endif
 						</tr>
 
 					@endforeach

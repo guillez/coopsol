@@ -2,10 +2,10 @@
 
 @extends('adminlte::page')
 
-@section('title', 'Seguros')
+@section('title', 'Productos')
 
 @section('content_header')
-    <h1>Seguros</h1>
+    <h1>Productos</h1>
 @stop
 
 @section('content')
@@ -15,15 +15,15 @@
 		<div class='col-md-8 col-md-offset-1'>
 			<div class='panel panel-default'>
 				<div class='panel-heading'>
-					Nueva Entidad Aseguradora
+					Nueva Producto
 				</div>
 
 
 				<div class='panel-body'>
 
-				{!! Form::open(['route'=>'seguros.store', 'files'=> true ]) !!}
+				{!! Form::open(['route'=>'productos1.store', 'files'=> true ]) !!}
 
-					@include('admin.seguros.partials.form')
+					@include('admin.productos.partials.form')
 
 				{!! Form::close() !!}
 				</div>	

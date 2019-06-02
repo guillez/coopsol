@@ -49,7 +49,7 @@ class CarritoController extends Controller
 	if(count($canastas)==0)  $canasta_id = 0;
 
        $carritos = Carrito::orderBy('id', 'DESC')->where('canasta_id', '=', $canasta_id)
-			->where('usuario_id', '=', auth()->user()->id )->paginate();
+			->where('usuario_id', '=', auth()->user()->id )->paginate(50);
        $montocantidad=0;
        foreach($carritos as $carrito){
 	
@@ -122,7 +122,7 @@ $canasta_id=1;
 	if(count($canastas)==0)  $canasta_id = '';
 
        $carritos = Carrito::orderBy('id', 'DESC')->where('canasta_id', '=', $canasta_id)
-			->where('usuario_id', '=', auth()->user()->id )->paginate();
+			->where('usuario_id', '=', auth()->user()->id )->paginate(50);
        $montocantidad=0;
        foreach($carritos as $carrito){
 	
@@ -132,18 +132,18 @@ $canasta_id=1;
 	$resto=$monto_total-$monto_acumulado;
 
 
-          $productos = Producto::where('canasta_id', $canasta_id)->get()->pluck('descripcion', 'id');
+          $productos = Producto::where('canasta_id', $canasta_id)->where('monto', '<=', $resto)->get()->pluck('descripcion', 'id');
         //$productos = Producto::pluck('descripcion_completa', 'id');
 
         $cantidades=array(1 => '1 Unidad', 2=> '2 Unidades', 3=> '3 Unidades', 4=> '4 Unidades', 5=> '5 Unidades', 6=> '6 Unidades', 7=> '7 Unidades', 8=> '8 Unidades', 9=> '9 Unidades', 10=> '10 Unidades', 11=> '11 Unidades', 12=> '12 Unidades');
 
 
 
- $carritos1 = Carrito::orderBy('id', 'DESC')->where('canasta_id', '=', $canasta_id)->where('usuario_id', '=', auth()->user()->id )->paginate();
+ $carritos1 = Carrito::orderBy('id', 'DESC')->where('canasta_id', '=', $canasta_id)->where('usuario_id', '=', auth()->user()->id )->paginate(50);
 
  //$carrito=$carritos1;
 
-$carrito = Carrito::orderBy('id', 'DESC')->paginate();
+$carrito = Carrito::orderBy('id', 'DESC')->paginate(50);
  
 
 
@@ -181,7 +181,7 @@ $canastas= Compra::join('canastas', 'compras.canasta_id', '=', 'canastas.id')
 	if(count($canastas)==0)  $canasta_id = '';
 
        $carritos = Carrito::orderBy('id', 'DESC')->where('canasta_id', '=', $canasta_id)
-			->where('usuario_id', '=', auth()->user()->id )->paginate();
+			->where('usuario_id', '=', auth()->user()->id )->paginate(50);
        $montocantidad=0;
        foreach($carritos as $carrito){
 	
@@ -263,7 +263,7 @@ $canastas= Compra::join('canastas', 'compras.canasta_id', '=', 'canastas.id')
 	if(count($canastas)==0)  $canasta_id = '';
 
        $carritos = Carrito::orderBy('id', 'DESC')->where('canasta_id', '=', $canasta_id)
-			->where('usuario_id', '=', auth()->user()->id )->paginate();
+			->where('usuario_id', '=', auth()->user()->id )->paginate(50);
        $montocantidad=0;
        foreach($carritos as $carrito){
 	
@@ -296,7 +296,7 @@ $canastas= Compra::join('canastas', 'compras.canasta_id', '=', 'canastas.id')
 	if(count($canastas)==0)  $canasta_id = '';
 
        $carritos = Carrito::orderBy('id', 'DESC')->where('canasta_id', '=', $canasta_id)
-			->where('usuario_id', '=', auth()->user()->id )->paginate();
+			->where('usuario_id', '=', auth()->user()->id )->paginate(50);
        $montocantidad=0;
        foreach($carritos as $carrito){
 	
@@ -313,15 +313,15 @@ $canastas= Compra::join('canastas', 'compras.canasta_id', '=', 'canastas.id')
 
 
 
+ $productos = Producto::where('canasta_id', $canasta_id)->where('monto', '<=', $resto)->get()->pluck('descripcion', 'id');
+//$productos = Producto::where('canasta_id', $canasta_id)->get()->pluck('descripcion', 'id');
 
-$productos = Producto::where('canasta_id', $canasta_id)->get()->pluck('descripcion', 'id');
 
-
-       $carritos = Carrito::orderBy('id', 'DESC')->paginate();
+       $carritos = Carrito::orderBy('id', 'DESC')->paginate(50);
 
 
  $carritos1 = Carrito::orderBy('id', 'DESC')->where('canasta_id', '=', $canasta_id)
-			->where('usuario_id', '=', auth()->user()->id )->paginate();
+			->where('usuario_id', '=', auth()->user()->id )->paginate(50);
 
 $cantidades=array(1 => '1 Unidad', 2=> '2 Unidades', 3=> '3 Unidades', 4=> '4 Unidades', 5=> '5 Unidades', 6=> '6 Unidades', 7=> '7 Unidades', 8=> '8 Unidades', 9=> '9 Unidades', 10=> '10 Unidades', 11=> '11 Unidades', 12=> '12 Unidades');
 
@@ -390,7 +390,7 @@ $monto_total=0;
 	$monto_total=$canasta->montototal;
 	}
        $carritos = Carrito::orderBy('id', 'DESC')->where('canasta_id', '=', $canasta_id)
-			->where('usuario_id', '=', auth()->user()->id )->paginate();
+			->where('usuario_id', '=', auth()->user()->id )->paginate(50);
        $montocantidad=0;
        foreach($carritos as $carrito){
 	
@@ -399,19 +399,19 @@ $monto_total=0;
 	$monto_acumulado=$montocantidad;
 	$resto=$monto_total-$monto_acumulado;
 
-
-          $productos = Producto::where('canasta_id', $canasta_id)->get()->pluck('descripcion', 'id');
+ $productos = Producto::where('canasta_id', $canasta_id)->where('monto', '<=', $resto)->get()->pluck('descripcion', 'id');
+         // $productos = Producto::where('canasta_id', $canasta_id)->get()->pluck('descripcion', 'id');
         //$productos = Producto::pluck('descripcion_completa', 'id');
 
         $cantidades=array(1 => '1 Unidad', 2=> '2 Unidades', 3=> '3 Unidades', 4=> '4 Unidades', 5=> '5 Unidades', 6=> '6 Unidades', 7=> '7 Unidades', 8=> '8 Unidades', 9=> '9 Unidades', 10=> '10 Unidades', 11=> '11 Unidades', 12=> '12 Unidades');
 
 
 
- $carritos1 = Carrito::orderBy('id', 'DESC')->where('canasta_id', '=', $canasta_id)->where('usuario_id', '=', auth()->user()->id )->paginate();
+ $carritos1 = Carrito::orderBy('id', 'DESC')->where('canasta_id', '=', $canasta_id)->where('usuario_id', '=', auth()->user()->id )->paginate(50);
 
  //$carrito=$carritos1;
 
-$carrito = Carrito::orderBy('id', 'DESC')->paginate();
+$carrito = Carrito::orderBy('id', 'DESC')->paginate(50);
  
 
 

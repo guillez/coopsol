@@ -33,11 +33,11 @@
 </div>
 
 
-El Valor Total Reservado es de : <b>{{ $monto_total }} </b><br>
-
-El Valor Actual de su compra es : <b>{{ $monto_acumulado }} </b><br>
-
-Le queda por gastar : <b>{{ $resto }} </b><br><br>
+@if($resto<10) 
+<?php $mensaje='<table align="center" color="RED"><tr><td><H3>CARRITO COMPLETO.</H3></td></tr></table>'; ?>
+<?php echo $mensaje; ?>
+@endif
+<br>
 
 
 <div class='container'>

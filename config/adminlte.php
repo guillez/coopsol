@@ -143,7 +143,7 @@ return [
              'text'       => 'Productos',
              'url'  => 'productos',
             'icon_color' => 'yellow',
-'can' => 'map-o',
+
         ],
         [
              'text'       => 'Canastas',

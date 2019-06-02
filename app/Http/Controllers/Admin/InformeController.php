@@ -54,14 +54,14 @@ class InformeController extends Controller
    
         $carritos = Carrito::join('productos', 'carritos.producto_id', '=', 'productos.id')->join('users', 'carritos.usuario_id', '=', 'users.id')->where('carritos.canasta_id', '=', $canasta_id)->where('carritos.usuario_id', '=', auth()->user()->id ) ->select('productos.descripcion as producto','productos.monto as monto','productos.unidad as unidad','carritos.cantidad as cantidad','users.name as nombre','users.email as email')->orderBy('productos.descripcion')->get();
 
-            Mail::send('imprimircan', ['carritos' => $carritos], function ($message) use ($my_destination)
+        /*    Mail::send('imprimircan', ['carritos' => $carritos], function ($message) use ($my_destination)
                 {
                     $message->from('ingguillermoz@gmail.com', 'Prueba');
                     $message->to($my_destination);
                     $message->subject('Prueba1');
                 }
             );
-
+*/
         view()->share('carritos',$carritos);//VARIABLE GLOBAL PRODUCTOS
 
         $pdf = PDF::loadView('imprimircan');//CARGO LA VISTA

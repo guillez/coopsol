@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
+
 class ProductoStoreRequest extends FormRequest
 {
     /**
@@ -38,7 +39,7 @@ class ProductoStoreRequest extends FormRequest
         ];
 
 
-
+}
 
 
 }

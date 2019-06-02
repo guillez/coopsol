@@ -13,9 +13,11 @@
 	{{ Form::label('cantidad','Cantidad') }}
 	{{ Form::select('cantidad', $cantidades, null, ['class'=>'form-control']) }}
 </div>
+
 <div class="form-group"> 
 	{{ Form::submit('Guardar', ['class'=>'btn btn-sm btn-primary']) }}
 </div>
+
 
 @section('scripts')
 
