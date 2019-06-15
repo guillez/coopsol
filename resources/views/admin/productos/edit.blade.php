@@ -18,6 +18,10 @@
 					Editar Productos
 				</div>
 
+ 				@if( auth()->id()<4)
+				<a href='{{route('productos.index')}}' class='btn btn-sm btn-success pull-right'>Listado</a>
+				@endif
+ 
 
 				<div class='panel-body'>
 

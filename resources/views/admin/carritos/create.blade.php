@@ -19,7 +19,9 @@
 <?php echo $mensaje; ?><a class="btn btn-success" href="{{route('terminarcompra')}}">Finalizar Compra <span class="glyphicon glyphicon-ok-sign"></span> </a>
 <br>
 @else
-	<H3>SOLO QUEDA REALIZAR EL PAGO PARA CONCLUIR LA COMPRA.</H3>
+	<H3>SOLO QUEDA REALIZAR EL PAGO PARA CONCLUIR LA COMPRA.</H3><br>
+	<H3>DIRECCION DE PAGO: Sarmiento 759. Hasta el Jueves 6 de Junio de 2019.</H3><br>
+
 @endif
 
 @else	
@@ -85,7 +87,7 @@
 					@foreach($carritos1 as $carrito1)
 						<tr>
 						<td> {{$carrito1->id}} </td>
-					    <td colspan=2> {{ $carrito1->producto->descripcion }} </td>	
+					    <td colspan=2> {{ $carrito1->producto->descripcion }}-{{ $carrito1->producto->unidad }} </td>	
 						<td > {{$carrito1->cantidad}} </td>				    	
 										
 

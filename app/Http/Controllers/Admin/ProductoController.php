@@ -78,10 +78,10 @@ class ProductoController extends Controller
      */
     public function edit($id)
     {
-        //$producto = Producto::find($id);
+        $producto = Producto::find($id);
        
-        //return view('admin.productos.edit', compact('producto'));
-  return view('admin.productos.index', compact('productos'));
+        return view('admin.productos.edit', compact('producto'));
+  //return view('admin.productos.index', compact('productos'));
     }
 
     /**
@@ -93,9 +93,9 @@ class ProductoController extends Controller
      */
     public function update(ProductoUpdateRequest $request, $id)
     {
-       // $producto = Producto::find($id);
-      //  $producto->fill($request->all())->save();
-       // return redirect()->route('productos.edit', $producto->id)->with('info','Entidad Aseguradora Actualizada con Exito');
+        $producto = Producto::find($id);
+        $producto->fill($request->all())->save();
+        return redirect()->route('productos.edit', $producto->id)->with('info','Entidad Aseguradora Actualizada con Exito');
     }
 
     /**

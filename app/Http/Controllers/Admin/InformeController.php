@@ -65,7 +65,7 @@ class InformeController extends Controller
         view()->share('carritos',$carritos);//VARIABLE GLOBAL PRODUCTOS
 
         $pdf = PDF::loadView('imprimircan');//CARGO LA VISTA
-        return $pdf->download('compra');//SUGERIR NOMBRE A DESCARGAR
+        return $pdf->download('compra.pdf');//SUGERIR NOMBRE A DESCARGAR
 
     }
 

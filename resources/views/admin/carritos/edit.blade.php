@@ -51,7 +51,7 @@
 					@foreach($carritos1 as $carrito1)
 						<tr>
 						<td> {{$carrito1->id}} </td>
-					    <td colspan=2> {{ $carrito1->producto->descripcion }} </td>	
+					    <td colspan=2> {{ $carrito1->producto->descripcion }}-{{ $carrito1->producto->unidad }} </td>	
 						<td > {{$carrito1->cantidad}} </td>				    	
 										
 

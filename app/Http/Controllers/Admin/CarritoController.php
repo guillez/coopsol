@@ -133,7 +133,7 @@ $canasta_id=1;
 	$resto=$monto_total-$monto_acumulado;
 
 
-          $productos = Producto::where('canasta_id', $canasta_id)->where('monto', '<=', $resto)->get()->pluck('descripcion', 'id');
+          $productos = Producto::where('canasta_id', $canasta_id)->where('activo', '=', '1')->where('monto', '<=', $resto)->get()->pluck('descripcion', 'id');
         //$productos = Producto::pluck('descripcion_completa', 'id');
 
         $cantidades=array(1 => '1 Unidad', 2=> '2 Unidades', 3=> '3 Unidades', 4=> '4 Unidades', 5=> '5 Unidades', 6=> '6 Unidades', 7=> '7 Unidades', 8=> '8 Unidades', 9=> '9 Unidades', 10=> '10 Unidades', 11=> '11 Unidades', 12=> '12 Unidades');
@@ -314,7 +314,7 @@ $canastas= Compra::join('canastas', 'compras.canasta_id', '=', 'canastas.id')
 
 
 
- $productos = Producto::where('canasta_id', $canasta_id)->where('monto', '<=', $resto)->get()->pluck('descripcion', 'id');
+ $productos = Producto::where('canasta_id', $canasta_id)->where('activo', '=', '1')->where('monto', '<=', $resto)->get()->pluck('descripcion', 'id');
 //$productos = Producto::where('canasta_id', $canasta_id)->get()->pluck('descripcion', 'id');
 
 
@@ -400,7 +400,7 @@ $monto_total=0;
 	$monto_acumulado=$montocantidad;
 	$resto=$monto_total-$monto_acumulado;
 
- $productos = Producto::where('canasta_id', $canasta_id)->where('monto', '<=', $resto)->get()->pluck('descripcion', 'id');
+ $productos = Producto::where('canasta_id', $canasta_id)->where('activo', '=', '1')->where('monto', '<=', $resto)->get()->pluck('descripcion', 'id');
          // $productos = Producto::where('canasta_id', $canasta_id)->get()->pluck('descripcion', 'id');
         //$productos = Producto::pluck('descripcion_completa', 'id');
 
@@ -464,7 +464,7 @@ $carrito = Carrito::orderBy('id', 'DESC')->paginate(50);
 		    );*/
 
 
-        $my_destination[] = "ingguillermoz@gmail.com";  
+        $my_destination[] = "coopdelpueblocdelu@gmail.com";  
 
            // $personas =  Persona::orderBy('id', 'DESC')->find(22); //$this->personas->find(22);
 
@@ -480,13 +480,6 @@ $carrito = Carrito::orderBy('id', 'DESC')->paginate(50);
    
         $carritos = Carrito::join('productos', 'carritos.producto_id', '=', 'productos.id')->join('users', 'carritos.usuario_id', '=', 'users.id')->where('carritos.canasta_id', '=', $canasta_id)->where('carritos.usuario_id', '=', auth()->user()->id ) ->select('productos.descripcion as producto','productos.monto as monto','productos.unidad as unidad','carritos.cantidad as cantidad','users.name as nombre','users.email as email')->orderBy('productos.descripcion')->get();
 
-            Mail::send('imprimircan', ['carritos' => $carritos], function ($message) use ($my_destination)
-                {
-                    $message->from('ingguillermoz@gmail.com', 'Confirmacion de Compra');
-                    $message->to($my_destination);
-                    $message->subject('Confirmacion de Compra');
-                }
-            );
 
 
 
@@ -506,7 +499,14 @@ $carrito = Carrito::orderBy('id', 'DESC')->paginate(50);
 
      $compra->save();
 
-
+/*            Mail::send('imprimircan', ['carritos' => $carritos], function ($message) use ($my_destination)
+                {
+                    $message->from('coopdelpueblocdelu@gmail.com', 'Confirmacion de Compra');
+                    $message->to($my_destination);
+                    $message->subject('Confirmacion de Compra');
+                }
+            );
+*/
         return view('home');
 
 

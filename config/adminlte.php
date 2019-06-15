@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'title' => 'SAOL V2',
+    'title' => 'CooperativaDelPueblo',
 
     'title_prefix' => '',
 
