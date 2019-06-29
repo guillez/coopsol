@@ -133,7 +133,7 @@ $canasta_id=1;
 	$resto=$monto_total-$monto_acumulado;
 
 
-          $productos = Producto::where('canasta_id', $canasta_id)->where('activo', '=', '1')->where('monto', '<=', $resto)->get()->pluck('descripcion', 'id');
+          $productos = Producto::where('canasta_id', $canasta_id)->where('activo', '=', '1')->where('monto', '<=', $resto)->orderBy('descripcion')->get()->pluck('descripcioncompleta' , 'id');
         //$productos = Producto::pluck('descripcion_completa', 'id');
 
         $cantidades=array(1 => '1 Unidad', 2=> '2 Unidades', 3=> '3 Unidades', 4=> '4 Unidades', 5=> '5 Unidades', 6=> '6 Unidades', 7=> '7 Unidades', 8=> '8 Unidades', 9=> '9 Unidades', 10=> '10 Unidades', 11=> '11 Unidades', 12=> '12 Unidades');
@@ -314,9 +314,9 @@ $canastas= Compra::join('canastas', 'compras.canasta_id', '=', 'canastas.id')
 
 
 
- $productos = Producto::where('canasta_id', $canasta_id)->where('activo', '=', '1')->where('monto', '<=', $resto)->get()->pluck('descripcion', 'id');
+// $productos = Producto::where('canasta_id', $canasta_id)->where('activo', '=', '1')->where('monto', '<=', $resto)->get()->pluck('descripcion', 'id');
 //$productos = Producto::where('canasta_id', $canasta_id)->get()->pluck('descripcion', 'id');
-
+          $productos = Producto::where('canasta_id', $canasta_id)->where('activo', '=', '1')->where('monto', '<=', $resto)->orderBy('descripcion')->get()->pluck('descripcioncompleta' , 'id');
 
        $carritos = Carrito::orderBy('id', 'DESC')->paginate(50);
 
@@ -400,9 +400,10 @@ $monto_total=0;
 	$monto_acumulado=$montocantidad;
 	$resto=$monto_total-$monto_acumulado;
 
- $productos = Producto::where('canasta_id', $canasta_id)->where('activo', '=', '1')->where('monto', '<=', $resto)->get()->pluck('descripcion', 'id');
+ //$productos = Producto::where('canasta_id', $canasta_id)->where('activo', '=', '1')->where('monto', '<=', $resto)->get()->pluck('descripcion', 'id');
          // $productos = Producto::where('canasta_id', $canasta_id)->get()->pluck('descripcion', 'id');
         //$productos = Producto::pluck('descripcion_completa', 'id');
+          $productos = Producto::where('canasta_id', $canasta_id)->where('activo', '=', '1')->where('monto', '<=', $resto)->orderBy('descripcion')->get()->pluck('descripcioncompleta' , 'id');
 
         $cantidades=array(1 => '1 Unidad', 2=> '2 Unidades', 3=> '3 Unidades', 4=> '4 Unidades', 5=> '5 Unidades', 6=> '6 Unidades', 7=> '7 Unidades', 8=> '8 Unidades', 9=> '9 Unidades', 10=> '10 Unidades', 11=> '11 Unidades', 12=> '12 Unidades');
 

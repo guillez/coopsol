@@ -33,6 +33,22 @@ class CompraController extends Controller
         return view('admin.compras.index', compact('compras','controlcanasta','canastas'));
     }
 
+
+
+   public function pagadas()
+    {
+	$controlcanasta= Compra::join('canastas', 'compras.canasta_id', '=', 'canastas.id')
+                                 ->where('canastas.activa', '=', '1')->where('compras.confirmada', '=', '2' )
+                                 ->select('canastas.id as cid')
+                                 ->get();
+       if(count($controlcanasta)>0)  $canastas = '';
+
+       $compras = Compra::orderBy('name', 'ASC')->join('users', 'compras.usuario_id', '=', 'users.id')->where('compras.confirmada', '=', '2' )->select('users.name as name', 'compras.*')->paginate();
+
+        return view('admin.pagadas.index', compact('compras','controlcanasta','canastas'));
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *

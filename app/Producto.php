@@ -7,12 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class Producto extends Model
 {
 
-	protected $fillable = ['id','descripcion', 'monto','unidad'];
+	protected $fillable = ['id','descripcion', 'monto','unidad', 'descripcioncompleta', 'proveedor_id'];
 
-	public function getDescripcionCopletaAttribute()
+	public function getDescripcionCompletaAttribute()
 	{
 	    return $this->descripcion.' - '.$this->monto.' $';
 	}
 
-
+	public function getDescripcioncompleta()
+	{
+	    return $this->descripcion.' - '.$this->monto.' $';
+	}
 }

@@ -58,7 +58,9 @@ Route::get('informemensual',array(
 	Route::resource('carritos', 'Admin\CarritoController');
 	Route::resource('carritos1', 'Admin\CarritoController');
 	//Route::post('/changepassword','ProfileController@changepassword')->name('changepassword');
-	Route::get('/terminarcompra', 'Admin\CarritoController@terminarcompra')->name('terminarcompra');
+	Route::get('/terminarcompra', 'Admin\CarritoController@pagadas')->name('terminarcompra');
 	//Route::resource('imprimircan', 'Admin\InformeController@imprimircan');
+        Route::get('reservas/importar/{id}','Admin\CompraController@pagada')->name('sidcerplan.importar');
+	Route::get('pagadas', 'Admin\CompraController@pagadas')->name('pagadas');
 });
 

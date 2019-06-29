@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Producto;
+use App\Proveedor;
 
 class ProductoController extends Controller
 {
@@ -20,7 +21,7 @@ class ProductoController extends Controller
     public function index()
     {
         //
-       $productos = Producto::orderBy('id', 'DESC')->paginate(50);
+       $productos = Producto::orderBy('descripcion', 'ASC')->paginate(50);
        // $posts = Post::orderBy('id', 'DESC')->where('user_id',auth()->user()->id)->paginate();
        // dd($posts);
         return view('admin.productos.index', compact('productos'));
@@ -45,8 +46,8 @@ class ProductoController extends Controller
      */
     public function store(ProductoStoreRequest $request)
     {
-
-        $request->request->add(['proveedor_id' => 1 ]);
+       // $proveedores = Proveedor::orderBy('nombre','ASC')->pluck('nombre','id');
+        //$request->request->add(['proveedor_id' => 1 ]);
      // $request->request->add(['montocantidad' => $monto_cantidad ]);
     //  $request->request->add(['montoacumulado' => 0]);
     //   $request->request->add(['fechacarga' => date('Y-m-d')]);
@@ -79,8 +80,8 @@ class ProductoController extends Controller
     public function edit($id)
     {
         $producto = Producto::find($id);
-       
-        return view('admin.productos.edit', compact('producto'));
+       $proveedores = Proveedor::orderBy('denominacion','ASC')->pluck('denominacion','id');
+        return view('admin.productos.edit', compact('producto','proveedores'));
   //return view('admin.productos.index', compact('productos'));
     }
 

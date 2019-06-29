@@ -52,7 +52,7 @@ class InformeController extends Controller
 	//$carritos = Carrito::orderBy('id', 'DESC')->where('canasta_id', '=', $canasta_id)->get();	
         //$canastas = Carrito::join('*')->where('canasta_id', '=' ,$canasta_id)->where('usuario_id', '=', auth()->user()->id)->get();
    
-        $carritos = Carrito::join('productos', 'carritos.producto_id', '=', 'productos.id')->join('users', 'carritos.usuario_id', '=', 'users.id')->where('carritos.canasta_id', '=', $canasta_id)->where('carritos.usuario_id', '=', auth()->user()->id ) ->select('productos.descripcion as producto','productos.monto as monto','productos.unidad as unidad','carritos.cantidad as cantidad','users.name as nombre','users.email as email')->orderBy('productos.descripcion')->get();
+        $carritos = Carrito::join('productos', 'carritos.producto_id', '=', 'productos.id')->join('users', 'carritos.usuario_id', '=', 'users.id')->join('canastas', 'canastas.id', '=', 'carritos.canasta_id')->where('carritos.canasta_id', '=', $canasta_id)->where('carritos.usuario_id', '=', auth()->user()->id ) ->select('productos.descripcion as producto','productos.monto as monto','productos.proveedor_id as pid','productos.unidad as unidad','carritos.cantidad as cantidad','users.name as nombre','users.email as email')->orderBy('productos.descripcion')->get();
 
           /*  Mail::send('imprimircan', ['carritos' => $carritos], function ($message) use ($my_destination)
                 {
@@ -65,7 +65,7 @@ class InformeController extends Controller
         view()->share('carritos',$carritos);//VARIABLE GLOBAL PRODUCTOS
 
         $pdf = PDF::loadView('imprimircan');//CARGO LA VISTA
-        return $pdf->download('compra.pdf');//SUGERIR NOMBRE A DESCARGAR
+        return $pdf->download('compra_personal.pdf');//SUGERIR NOMBRE A DESCARGAR
 
     }
 
@@ -82,7 +82,7 @@ class InformeController extends Controller
 	}
 
    
-$carritos = DB::table('carritos')->join('productos', 'carritos.producto_id', '=', 'productos.id')->select(DB::raw('sum(carritos.cantidad) as cantidad, productos.descripcion, productos.monto, productos.unidad'))->where('carritos.canasta_id', '=', $canasta_id)->groupBy('productos.id')->orderBy('productos.descripcion')->get();
+$carritos = DB::table('carritos')->join('productos', 'carritos.producto_id', '=', 'productos.id')->join('canastas', 'canastas.id', '=', 'carritos.canasta_id')->join('compras', 'canastas.id', '=', 'carritos.canasta_id')->select(DB::raw('sum(carritos.cantidad) as cantidad, productos.descripcion, productos.monto, productos.unidad, productos.proveedor_id as pid'))->where('carritos.canasta_id', '=', $canasta_id)->where('compras.confirmada', '=', '3')->groupBy('productos.id')->orderBy('productos.descripcion')->get();
 
      /*   $carritos = Carrito::join('productos', 'carritos.producto_id', '=', 'productos.id')->join('users', 'carritos.usuario_id', '=', 'users.id')->where('carritos.canasta_id', '=', $canasta_id)->select('productos.descripcion as producto','carritos.cantidad as cantidad','users.name as nombre','users.email as email')->groupBy('productos.id')->get();
 */
@@ -90,7 +90,7 @@ $carritos = DB::table('carritos')->join('productos', 'carritos.producto_id', '='
         view()->share('carritos',$carritos);//VARIABLE GLOBAL PRODUCTOS
 
         $pdf = PDF::loadView('informemensual');//CARGO LA VISTA
-        return $pdf->download('compra');//SUGERIR NOMBRE A DESCARGAR
+        return $pdf->download('informe_mensual.pdf');//SUGERIR NOMBRE A DESCARGAR
 
     }
 

@@ -12,7 +12,10 @@
 	{{ Form::label('unidad','unidad') }}
 	{{ Form::text('unidad', null, ['class'=>'form-control','unidad'=>'unidad']) }}
 </div>
-
+<div class="form-group"> 
+	{{ Form::label('proveedor_id','Proveedor') }}
+	{{ Form::select('proveedor_id', $proveedores, null, ['class'=>'form-control']) }}
+</div>
 
 <div class="form-group"> 
 	{{ Form::submit('Guardar', ['class'=>'btn btn-sm btn-primary']) }}

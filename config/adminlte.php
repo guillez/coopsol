@@ -129,7 +129,7 @@ return [
             'text' => 'Lista de Compra',
             'url'  => 'informemensual',
             'icon' => 'map-o',
-            'can' => 'map-o',
+           
 
         ],
      
@@ -144,7 +144,14 @@ return [
              'text'       => 'Productos',
              'url'  => 'productos',
             'icon_color' => 'yellow',
-            'can' => 'map-o',
+            
+
+        ],
+        [
+             'text'       => 'Pagadas',
+             'url'  => 'pagadas',
+            'icon_color' => 'yellow',
+            
 
         ],
         [

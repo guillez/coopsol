@@ -13,7 +13,7 @@
 
 @if($resto<10) 
 
-@if(!$carritos1->isEmpty()) 
+	@if(!$carritos1->isEmpty()) 
 
 <?php $mensaje='<table align="center" color="RED" ><tr><td><H3>CARRITO COMPLETO.</H3></td></tr></table>'; ?>
 <?php echo $mensaje; ?><a class="btn btn-success" href="{{route('terminarcompra')}}">Finalizar Compra <span class="glyphicon glyphicon-ok-sign"></span> </a>
@@ -25,6 +25,7 @@
 @endif
 
 @else	
+
 
 
 <div class='container'>
@@ -51,9 +52,11 @@
 
 @endif
 
+<tr><td ><H3 style="background-color: GREEN"><?php echo "Saldo: $ ".$resto; ?></H3></td></tr>
+
+	
 <br>
-
-
+<br>
 <div class='container'>
 	<div class='row'>
 		<div class='col-md-8 col-md-offset-22'>
@@ -87,7 +90,7 @@
 					@foreach($carritos1 as $carrito1)
 						<tr>
 						<td> {{$carrito1->id}} </td>
-					    <td colspan=2> {{ $carrito1->producto->descripcion }}-{{ $carrito1->producto->unidad }} </td>	
+					    <td colspan=2> {{ $carrito1->producto->descripcion }}-{{ $carrito1->producto->unidad }}- Precio Unitario ${{ $carrito1->producto->monto }} </td>	
 						<td > {{$carrito1->cantidad}} </td>				    	
 										
 

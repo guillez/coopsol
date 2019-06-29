@@ -22,7 +22,7 @@ LISTADO DE PRODUCTOS
 
 
 <tr>
-<td style="width: 25px;">{{ $carrito->descripcion }}</td>
+<td style="width: 25px;">{{ $carrito->descripcion }}[{{ $carrito->pid }}]</td>
 <td style="width: 2px; border:none; ">&nbsp; </td>
 <td style="width: 10px;  text-align: center;">{{ $carrito->cantidad }}</td>
 <td style="width: 2px; border:none; ">&nbsp; </td>

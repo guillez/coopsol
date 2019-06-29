@@ -19,7 +19,7 @@
 				Listado de Productos
 				<td width='100%'> 
 
- 				@if( auth()->id()<4)
+ 				@if( auth()->id()==1)
 				<a href='{{route('productos.create')}}' class='btn btn-sm btn-success pull-right'>Nuevo</a>
 				@endif
  
@@ -52,7 +52,7 @@
 						<td > {{$producto->monto}} </td>	
 						<td>  </td>		
 									
-						@if( auth()->id()<4 )
+						@if( auth()->id()==1 )
 						<td width='10px'>  
 						<a href='{{route('productos.edit', $producto->id)}}' class='btn btn-sm btn-warning'>Editar</a>
 						</td>			
