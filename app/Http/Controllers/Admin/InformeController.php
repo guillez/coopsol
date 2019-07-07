@@ -82,8 +82,30 @@ class InformeController extends Controller
 	}
 
    
-$carritos = DB::table('carritos')->join('productos', 'carritos.producto_id', '=', 'productos.id')->join('canastas', 'canastas.id', '=', 'carritos.canasta_id')->join('compras', 'canastas.id', '=', 'carritos.canasta_id')->select(DB::raw('sum(carritos.cantidad) as cantidad, productos.descripcion, productos.monto, productos.unidad, productos.proveedor_id as pid'))->where('carritos.canasta_id', '=', $canasta_id)->where('compras.confirmada', '=', '3')->groupBy('productos.id')->orderBy('productos.descripcion')->get();
+$carritos = DB::table('carritos')->join('productos', 'carritos.producto_id', '=', 'productos.id')->select(DB::raw('sum(carritos.cantidad) as cantidad, productos.descripcion, productos.monto, productos.unidad, productos.proveedor_id as pid'))->where('carritos.anulado' ,'=', '2')->groupBy('carritos.producto_id')->orderBy('productos.descripcion')->get();
 
+/*
+$carritos = DB::table('carritos')->join('productos', 'carritos.producto_id', '=', 'productos.id')->join('canastas', 'canastas.id', '=', 'carritos.canasta_id')->join('compras', 'compras.canasta_id', '=', 'carritos.canasta_id')->select(DB::raw('sum(carritos.cantidad) as cantidad, productos.descripcion, productos.monto, productos.unidad, productos.proveedor_id as pid'))->where('compras.confirmada','=', 3)->where('carritos.canasta_id' ,'=',$canasta_id)->where('compras.usuario_id' ,'=','carritos.usuario_id')->groupBy('carritos.producto_id')->orderBy('productos.descripcion')->get();
+
+$carritos = DB::table('carritos')->join('productos', 'carritos.producto_id', '=', 'productos.id')->join('canastas', 'canastas.id', '=', 'carritos.canasta_id')->join('compras', 'compras.canasta_id', '=', 'carritos.canasta_id')->select(DB::raw('sum(carritos.cantidad) as cantidad, productos.descripcion, productos.monto, productos.unidad, productos.proveedor_id as pid'))->where('compras.confirmada','=', 3)->where('carritos.canasta_id' ,'=',$canasta_id)->where('compras.usuario_id' ,'=','carritos.usuario_id')->groupBy('carritos.producto_id')->orderBy('productos.descripcion')->get();
+
+select sum(carritos.cantidad) as cantidad, productos.descripcion, productos.monto, productos.unidad, productos.proveedor_id as pid 
+from `carritos` 
+inner join `productos` on `carritos`.`producto_id` = `productos`.`id` 
+inner join `canastas` on `canastas`.`id` = `carritos`.`canasta_id` 
+inner join `compras` on `compras`.`canastas_id` = `carritos`.`canasta_id` 
+where (`carritos`.`canasta_id` = `1` and `compras`.`confirmada` = `3`) 
+group by `productos`.`id` 
+order by `productos`.`descripcion` asc;
+
+
+$query = DB::table("persons")->select("persons.name", "protocols.text")
+    ->leftjoin("protocols", function ($join) {
+        $join->on("persons.id", "=", "protocols.personId");
+        $join->where("protocols.id", ">", 10);
+    });
+    ->get();
+*/
      /*   $carritos = Carrito::join('productos', 'carritos.producto_id', '=', 'productos.id')->join('users', 'carritos.usuario_id', '=', 'users.id')->where('carritos.canasta_id', '=', $canasta_id)->select('productos.descripcion as producto','carritos.cantidad as cantidad','users.name as nombre','users.email as email')->groupBy('productos.id')->get();
 */
 

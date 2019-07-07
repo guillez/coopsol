@@ -61,6 +61,7 @@ Route::get('informemensual',array(
 	Route::get('/terminarcompra', 'Admin\CarritoController@pagadas')->name('terminarcompra');
 	//Route::resource('imprimircan', 'Admin\InformeController@imprimircan');
         Route::get('reservas/importar/{id}','Admin\CompraController@pagada')->name('sidcerplan.importar');
-	Route::get('pagadas', 'Admin\CompraController@pagadas')->name('pagadas');
+	//Route::get('pagadas', 'Admin\CompraController@pagadas')->name('pagadas');
+        Route::get('pagadas', 'Admin\CompraController@pagadas')->name('pagadas');
 });
 

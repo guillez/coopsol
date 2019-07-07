@@ -125,13 +125,13 @@ return [
             'url'  => 'imprimircan',
             'icon' => 'file-text-o',
         ],
-        [
+       /* [
             'text' => 'Lista de Compra',
             'url'  => 'informemensual',
             'icon' => 'map-o',
            
 
-        ],
+        ],*/
      
         'DE INTERES',
         [
@@ -147,13 +147,13 @@ return [
             
 
         ],
-        [
+       /* [
              'text'       => 'Pagadas',
              'url'  => 'pagadas',
             'icon_color' => 'yellow',
             
 
-        ],
+        ],*/
         [
              'text'       => 'Canastas',
              'url'  => 'canastas',

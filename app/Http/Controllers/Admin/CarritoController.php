@@ -434,6 +434,7 @@ $carrito = Carrito::orderBy('id', 'DESC')->paginate(50);
 
  public function terminarcompra()
     {
+
 /*
        $my_destination[] = "ingguillermoz@gmail.com";  
 
@@ -489,7 +490,7 @@ $carrito = Carrito::orderBy('id', 'DESC')->paginate(50);
  ->where('canastas.id', '=', $canasta_id)->select('compras.id as cid')->get();
 
 	foreach($controlcanasta as $co){
-          $cid =$co->cid ;
+          $cid =$co->cid ; 
 	}
 
     // if(count($controlcanasta)>0)  $cid =$controlcanasta->cid ;
@@ -514,5 +515,38 @@ $carrito = Carrito::orderBy('id', 'DESC')->paginate(50);
 
     }
 
+ public function pagadas()
+    {
 
+     $canastas = Canasta::orderBy('id', 'DESC')->where('activa', '=', 1)->get();
+
+
+       foreach($canastas as $canasta){
+	
+        $canasta_id=$canasta->id;
+	}
+
+   
+        $carritos = Carrito::join('productos', 'carritos.producto_id', '=', 'productos.id')->join('users', 'carritos.usuario_id', '=', 'users.id')->where('carritos.canasta_id', '=', $canasta_id)->where('carritos.usuario_id', '=', auth()->user()->id ) ->select('productos.descripcion as producto','productos.monto as monto','productos.unidad as unidad','carritos.cantidad as cantidad','users.name as nombre','users.email as email')->orderBy('productos.descripcion')->get();
+
+
+
+
+    $controlcanasta= Compra::join('canastas', 'compras.canasta_id', '=', 'canastas.id')
+                                 ->where('canastas.activa', '=', '1')->where('compras.usuario_id', '=', auth()->user()->id)
+ ->where('canastas.id', '=', $canasta_id)->select('compras.id as cid')->get();
+
+	foreach($controlcanasta as $co){
+          $cid =$co->cid ; 
+	}
+
+    // if(count($controlcanasta)>0)  $cid =$controlcanasta->cid ;
+
+     $compra = Compra::find($cid);
+
+     $compra->confirmada = 2;
+
+     $compra->save();
+return view('home');
+}
 }

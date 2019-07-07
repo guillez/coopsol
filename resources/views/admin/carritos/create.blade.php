@@ -19,8 +19,9 @@
 <?php echo $mensaje; ?><a class="btn btn-success" href="{{route('terminarcompra')}}">Finalizar Compra <span class="glyphicon glyphicon-ok-sign"></span> </a>
 <br>
 @else
-	<H3>SOLO QUEDA REALIZAR EL PAGO PARA CONCLUIR LA COMPRA.</H3><br>
-	<H3>DIRECCION DE PAGO: Sarmiento 759. Hasta el Jueves 6 de Junio de 2019.</H3><br>
+	<H3>SOLO QUEDA REALIZAR EL PAGO PARA CONCLUIR LA COMPRA.</H3><br><br>
+	<H3><b>DIRECCION DE PAGO: 8 de Junio 812</b>. <br>Pagos hasta el día 4 de Julio de 2019.</H3><br><br>
+	<H3>DIRECCION DE ENTREGA: Sarmiento 759. Sábado 6 de Julio de 2019.</H3><br>
 
 @endif
 
